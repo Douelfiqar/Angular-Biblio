@@ -3,14 +3,29 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { BiblioComponent } from './biblio/biblio.component';
+import { HttpClientModule } from '@angular/common/http';
+import {NgxPaginationModule} from 'ngx-pagination';
+import { BookComponent } from './book/book.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'; // <-- import the module
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
+import { AddProductComponent } from './add-product/add-product.component';
+
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    BiblioComponent,
+    BookComponent,
+    AddProductComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    NgxPaginationModule,
+    FontAwesomeModule,
+    SweetAlert2Module
   ],
   providers: [],
   bootstrap: [AppComponent]

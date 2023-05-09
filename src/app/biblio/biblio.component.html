@@ -1,0 +1,122 @@
+<div class="container">
+    <div class="row mt-5">
+        <div class="col-md-4">
+            <ul *ngIf="docs" class="list-group">
+                <li *ngFor="let d of randomNames;" class="list-group-item text-primary" style="cursor: pointer;" routerLink="/biblio/book/{{d.id}}">{{d.titre}}</li>
+            </ul>
+        </div>
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header d-flex justify-content-between">
+                    <span class="mt-1">List des Docs</span>
+                     <button class="btn btn-outline-info" type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><fa-icon [icon]="faPlus"></fa-icon><span> Ajouter un document</span></button>
+                   
+                     <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="modal-title" id="staticBackdropLabel">Ajouter Un Produit</h5>
+                              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="row">
+                                    <div class="mb-3 col-md-5">
+                                        <label for="exampleFormControlInput1" class="form-label">Auteur</label>
+                                        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="John ..">
+                                    </div>
+                                    <div class="col-md-1"></div>
+                                    <div class="mb-3 col-md-6">
+                                        <label for="exampleFormControlInput1" class="form-label">Categorie</label>
+                                        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Action">
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="mb-3 col-md-5">
+                                        <label for="exampleFormControlInput1" class="form-label">Date d'edition</label>
+                                        <input type="date" class="form-control" id="exampleFormControlInput1">
+                                    </div>
+                                    <div class="col-md-1"></div>
+                                    <div class="mb-3 col-md-6">
+                                        <label for="exampleFormControlInput1" class="form-label">Nombre d'exemplaire</label>
+                                        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="5">
+                                    </div>
+                                </div>
+                                
+                                <div class="row">
+                                    <div class="mb-3 col-md-5">
+                                        <label for="exampleFormControlInput1" class="form-label">Prix location</label>
+                                        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="123">
+                                    </div>
+                                    <div class="col-md-1"></div>
+                                    <div class="mb-3 col-md-6">
+                                        <label for="exampleFormControlInput1" class="form-label">Sujet</label>
+                                        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="AZASQ">
+                                    </div>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="exampleFormControlInput1" class="form-label">Lien d'image</label>
+                                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="https://..">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="exampleFormControlInput1" class="form-label">Titre</label>
+                                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="AZERT">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="exampleFormControlInput1" class="form-label">Short Description</label>
+                                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="AZRER EDAE ..">
+                                </div>
+                               
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                              <button type="button" class="btn btn-primary">Ajouter</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                     
+                </div>
+                <div class="card-body row">
+                    <ul class="nav">
+                          <li class="nav-link">
+                            <button class="btn btn-outline-primary" (click)="filterByCateg('All')">All</button>
+                          </li>
+                          <li class="nav-link" *ngFor="let d of randomCategories">
+                            <button class="btn btn-outline-primary" (click)="filterByCateg(d)">{{ d }}</button>
+                          </li>
+                      </ul>
+                    <div class="col-md-4" *ngFor="let d of docs | paginate: { itemsPerPage: itemsPerPage, currentPage: p }">
+
+                        <div class="card mt-3" style="width: 16rem;">
+                            <img src="{{d.linkImage}}" style="cursor: pointer;" routerLink="/biblio/book/{{d.id}}" height="200px;object-fit:cover;" class="card-img-top" alt="...">
+                            <div class="card-body">
+                              <h5 class="card-title truncate-text ">{{d.titre}}</h5>
+                              <p class="fw-light truncate-text">{{d.shortDesc}}</p>
+                              <div class="d-flex justify-content-between">
+                                <button class="btn btn-danger" (click)="sweet(d.id)"><fa-icon [icon]="faTrash"></fa-icon></button>                        
+                                
+                                <p class="text-info fw-light">{{d.prixLocation}} DH   </p>
+
+                              </div>
+                            </div>
+                        </div>
+
+                      </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4"></div>
+                    <div class="mt-8 py-5 d-flex justify-center items-center col-md-8">
+                        <pagination-controls (pageChange)="p = $event"></pagination-controls>
+                    </div>
+                </div>
+               
+
+            </div>
+
+            
+
+        </div>
+    </div>
+</div>
