@@ -29,9 +29,16 @@ export class BiblioComponent implements OnInit {
     public randomNames: any;
     public names:string[] = [];
 
+
+    public ngOnInit(): void {
+      this.functionOnInit();
+    }
+
     public functionOnInit(){
       this.biblioService.getDocs().subscribe((data:any)=>{
-        this.docs = data;
+
+        this.docs = data.sort((a, b) => b.id - a.id);
+
         this.totalProduct = data.length;
 
         for(let d of data){
@@ -44,10 +51,6 @@ export class BiblioComponent implements OnInit {
 
       })
     }
-    public ngOnInit(): void {
-      this.functionOnInit();
-    }
-
 
     public filterByCateg(categ:string){
 
@@ -55,20 +58,14 @@ export class BiblioComponent implements OnInit {
         this.functionOnInit();
       }else{
         this.biblioService.getDocsByCateg(categ).subscribe((data:any)=>{
-        this.docs = data;
-        this.totalProduct = data.length;
+        this.docs = data
+
         })
       }
 
     }
 
-    public deleteIteam(id:any){
-        this.biblioService.deleteDocsById(id).subscribe(()=>{
-
-        });
-
-    }
-
+    //Delete Iteam
     sweet(id:number){
       Swal.fire({
         title: 'Are you sure?',
@@ -91,5 +88,29 @@ export class BiblioComponent implements OnInit {
           
         }
       })
+    }
+
+    SortHigherPrice(){
+      this.docs = this.docs.sort((a, b) => b.prixLocation - a.prixLocation);
+    }
+
+    SortLowerPrice(){
+      this.docs = this.docs.sort((a, b) => a.prixLocation  - b.prixLocation);
+    }
+
+    SortAlpha(){
+      this.docs = this.docs.sort((a, b) => a.titre.localeCompare(b.titre));
+    }
+
+    public searchTerm:string = '';
+
+    onSearch(){
+       this.biblioService.searchDocs(this.searchTerm).subscribe((data:any)=>{
+        this.docs = data
+       })
+
+       if(this.searchTerm === ''){
+        this.functionOnInit()
+       }
     }
 }

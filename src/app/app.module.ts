@@ -10,7 +10,8 @@ import { BookComponent } from './book/book.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'; // <-- import the module
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { AddProductComponent } from './add-product/add-product.component';
-
+import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms'; // Import FormsModule here
 
 @NgModule({
   declarations: [
@@ -25,7 +26,9 @@ import { AddProductComponent } from './add-product/add-product.component';
     HttpClientModule,
     NgxPaginationModule,
     FontAwesomeModule,
-    SweetAlert2Module
+    SweetAlert2Module,
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

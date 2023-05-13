@@ -8,7 +8,24 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header d-flex justify-content-between">
+                  <div class="d-flex justify-content-between">
                     <span class="mt-1">List des Docs</span>
+                    <div class="dropdown ms-3">
+                      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                        Trier
+                      </button>
+                      <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                        <li><a class="dropdown-item" style="cursor: pointer;" (click)="SortHigherPrice()">Decroissant</a></li>
+                        <li><a class="dropdown-item" style="cursor: pointer;" (click)="SortLowerPrice()">Croissant</a></li>
+                        <li><a class="dropdown-item" style="cursor: pointer;" (click)="SortAlpha()">A-Z</a></li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div>
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" [(ngModel)]="searchTerm" (keyup)="onSearch()"> 
+                  </div>
+                  <!-- <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"> -->
+
                      <button class="btn btn-outline-info" type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><fa-icon [icon]="faPlus"></fa-icon><span> Ajouter un document</span></button>
                    
                      <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -19,60 +36,14 @@
                               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                                <div class="row">
-                                    <div class="mb-3 col-md-5">
-                                        <label for="exampleFormControlInput1" class="form-label">Auteur</label>
-                                        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="John ..">
-                                    </div>
-                                    <div class="col-md-1"></div>
-                                    <div class="mb-3 col-md-6">
-                                        <label for="exampleFormControlInput1" class="form-label">Categorie</label>
-                                        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Action">
-                                    </div>
-                                </div>
+                  
 
-                                <div class="row">
-                                    <div class="mb-3 col-md-5">
-                                        <label for="exampleFormControlInput1" class="form-label">Date d'edition</label>
-                                        <input type="date" class="form-control" id="exampleFormControlInput1">
-                                    </div>
-                                    <div class="col-md-1"></div>
-                                    <div class="mb-3 col-md-6">
-                                        <label for="exampleFormControlInput1" class="form-label">Nombre d'exemplaire</label>
-                                        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="5">
-                                    </div>
-                                </div>
-                                
-                                <div class="row">
-                                    <div class="mb-3 col-md-5">
-                                        <label for="exampleFormControlInput1" class="form-label">Prix location</label>
-                                        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="123">
-                                    </div>
-                                    <div class="col-md-1"></div>
-                                    <div class="mb-3 col-md-6">
-                                        <label for="exampleFormControlInput1" class="form-label">Sujet</label>
-                                        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="AZASQ">
-                                    </div>
-                                </div>
-
-                                <div class="mb-3">
-                                    <label for="exampleFormControlInput1" class="form-label">Lien d'image</label>
-                                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="https://..">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="exampleFormControlInput1" class="form-label">Titre</label>
-                                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="AZERT">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="exampleFormControlInput1" class="form-label">Short Description</label>
-                                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="AZRER EDAE ..">
-                                </div>
+                                <app-add-product></app-add-product>
+                        
+                               
                                
                             </div>
-                            <div class="modal-footer">
-                              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
-                              <button type="button" class="btn btn-primary">Ajouter</button>
-                            </div>
+                           
                           </div>
                         </div>
                       </div>
@@ -87,7 +58,7 @@
                             <button class="btn btn-outline-primary" (click)="filterByCateg(d)">{{ d }}</button>
                           </li>
                       </ul>
-                    <div class="col-md-4" *ngFor="let d of docs | paginate: { itemsPerPage: itemsPerPage, currentPage: p }">
+                    <div class="col-md-4" *ngFor="let d of docs | paginate: { itemsPerPage: itemsPerPage, currentPage: p } ">
 
                         <div class="card mt-3" style="width: 16rem;">
                             <img src="{{d.linkImage}}" style="cursor: pointer;" routerLink="/biblio/book/{{d.id}}" height="200px;object-fit:cover;" class="card-img-top" alt="...">

@@ -1,1 +1,61 @@
-<p>add-product works!</p>
+<form [formGroup]="addBook" (ngSubmit)="onSubmit()">
+
+    <div class="modal-body">
+        <div class="row">
+            <div class="mb-3 col-md-5">
+                <label for="exampleFormControlInput1" class="form-label">Auteur</label>
+                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="John .." formControlName="auteur">
+            </div>
+            <div class="col-md-1"></div>
+            <div class="mb-3 col-md-6">
+                <label for="exampleFormControlInput1" class="form-label">Categorie</label>
+                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Action" formControlName="categorie">
+            </div>
+        </div>
+    
+        <div class="row">
+            <div class="mb-3 col-md-5">
+                <label for="exampleFormControlInput1" class="form-label">Date d'edition</label>
+                <input type="date" class="form-control" id="exampleFormControlInput1" formControlName="dateEdition">
+            </div>
+            <div class="col-md-1"></div>
+            <div class="mb-3 col-md-6">
+                <label for="exampleFormControlInput1" class="form-label">Nombre d'exemplaire</label>
+                <input type="number" class="form-control" id="exampleFormControlInput1" placeholder="5" formControlName="nombreExemplaire">
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="mb-3 col-md-5">
+                <label for="exampleFormControlInput1" class="form-label">Prix location</label>
+                <input type="number" class="form-control" id="exampleFormControlInput1" placeholder="123" formControlName="prixLocation">
+            </div>
+            <div class="col-md-1"></div>
+            <div class="mb-3 col-md-6">
+                <label for="exampleFormControlInput1" class="form-label">Sujet</label>
+                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="AZASQ" formControlName="sujet">
+            </div>
+        </div>
+    
+        <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Lien d'image</label>
+            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="https://.." formControlName="linkImage">
+        </div>
+
+        <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Titre</label>
+            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="AZERT" formControlName="titre">
+        </div>
+
+        <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Short Description</label>
+            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="AZRER EDAE .." formControlName="shortDesc">
+        </div>
+       
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" #CloseBookBtn>Fermer</button>
+      <button type="submit" class="btn btn-primary" >Ajouter</button>
+    </div>    
+
+</form>
