@@ -61,20 +61,98 @@
                     <div class="col-md-4" *ngFor="let d of docs | paginate: { itemsPerPage: itemsPerPage, currentPage: p } ">
 
                         <div class="card mt-3" style="width: 16rem;">
-                            <img src="{{d.linkImage}}" style="cursor: pointer;" routerLink="/biblio/book/{{d.id}}" height="200px;object-fit:cover;" class="card-img-top" alt="...">
-                            <div class="card-body">
-                              <h5 class="card-title truncate-text ">{{d.titre}}</h5>
-                              <p class="fw-light truncate-text">{{d.shortDesc}}</p>
-                              <div class="d-flex justify-content-between">
-                                <button class="btn btn-danger" (click)="sweet(d.id)"><fa-icon [icon]="faTrash"></fa-icon></button>                        
+                                <img src="{{d.linkImage}}" style="cursor: pointer;" routerLink="/biblio/book/{{d.id}}" height="200px;object-fit:cover;" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                  <h5 class="card-title truncate-text ">{{d.titre}}</h5>
+                                  <p class="fw-light truncate-text">{{d.shortDesc}}</p>
+                                  <div class="d-flex justify-content-between">
+                                    <div>
+                                      <button class="btn btn-link" (click)="sweet(d.id)"><fa-icon [icon]="faTrash"></fa-icon></button>                        
+                                      <button class="btn btn-link" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal1" (click)="getDocByIdToUpdate(d.id)"><fa-icon [icon]="faUpdate"></fa-icon></button>   
                                 
-                                <p class="text-info fw-light">{{d.prixLocation}} DH   </p>
+                                      <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                          <div class="modal-content">
+                                            <div class="modal-header">
+                                              <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                              <form [formGroup]="updateBook" (ngSubmit)="updateBookF()">
 
-                              </div>
-                            </div>
+                                                <div class="modal-body">
+                                                    <div class="row">
+                                                        <div class="mb-3 col-md-5">
+                                                            <label for="exampleFormControlInput1" class="form-label">Auteur</label>
+                                                            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="John .." formControlName="auteur">
+                                                        </div>
+                                                        <div class="col-md-1"></div>
+                                                        <div class="mb-3 col-md-6">
+                                                            <label for="exampleFormControlInput1" class="form-label">Categorie</label>
+                                                            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Action" formControlName="categorie">
+                                                        </div>
+                                                    </div>
+                                                
+                                                    <div class="row">
+                                                        <div class="mb-3 col-md-5">
+                                                            <label for="exampleFormControlInput1" class="form-label">Date d'edition</label>
+                                                            <input type="date" class="form-control" id="exampleFormControlInput1" formControlName="dateEdition">
+                                                        </div>
+                                                        <div class="col-md-1"></div>
+                                                        <div class="mb-3 col-md-6">
+                                                            <label for="exampleFormControlInput1" class="form-label">Nombre d'exemplaire</label>
+                                                            <input type="number" class="form-control" id="exampleFormControlInput1" placeholder="5" formControlName="nombreExemplaire">
+                                                        </div>
+                                                    </div>
+                                                    
+                                                    <div class="row">
+                                                        <div class="mb-3 col-md-5">
+                                                            <label for="exampleFormControlInput1" class="form-label">Prix location</label>
+                                                            <input type="number" class="form-control" id="exampleFormControlInput1" placeholder="123" formControlName="prixLocation">
+                                                        </div>
+                                                        <div class="col-md-1"></div>
+                                                        <div class="mb-3 col-md-6">
+                                                            <label for="exampleFormControlInput1" class="form-label">Sujet</label>
+                                                            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="AZASQ" formControlName="sujet">
+                                                        </div>
+                                                    </div>
+                                                
+                                                    <div class="mb-3">
+                                                        <label for="exampleFormControlInput1" class="form-label">Lien d'image</label>
+                                                        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="https://.." formControlName="linkImage">
+                                                    </div>
+                                            
+                                                    <div class="mb-3">
+                                                        <label for="exampleFormControlInput1" class="form-label">Titre</label>
+                                                        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="AZERT" formControlName="titre">
+                                                    </div>
+                                            
+                                                    <div class="mb-3">
+                                                        <label for="exampleFormControlInput1" class="form-label">Short Description</label>
+                                                        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="AZRER EDAE .." formControlName="shortDesc">
+                                                    </div>
+                                                   
+                                                </div>
+                                                <div class="modal-footer">
+                                                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" #CloseBookBtn1>Fermer</button>
+                                                  <button type="submit" class="btn btn-primary" >Ajouter</button>
+                                                </div>    
+                                            
+                                            </form>
+                                            </div>
+                                           
+                                          </div>
+                                        </div>
+                                      </div>
+                                
+                                    </div>
+                                    <p class="text-info fw-light">{{d.prixLocation}} DH   </p>
+
+                                  </div>
+                                </div>
                         </div>
 
-                      </div>
+                    </div>
                 </div>
                 <div class="row">
                     <div class="col-md-4"></div>

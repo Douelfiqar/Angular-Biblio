@@ -11,14 +11,16 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'; // <-- imp
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { AddProductComponent } from './add-product/add-product.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { FormsModule } from '@angular/forms'; // Import FormsModule here
+import { FormsModule } from '@angular/forms';
+import { UpdateBookComponent } from './biblio/update-book/update-book.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     BiblioComponent,
     BookComponent,
-    AddProductComponent
+    AddProductComponent,
+    UpdateBookComponent,
   ],
   imports: [
     BrowserModule,

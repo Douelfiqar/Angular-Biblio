@@ -26,4 +26,11 @@ export class BiblioServiceService {
     return this.http.get(this.link+"Biblio/Search?term="+term);
   }
 
+  getDocById(id:number){
+    return this.http.get(this.link+"Biblio/book/"+id+"/")
+  }
+
+  updateBook(data:any){
+    return this.http.post(this.link+"Biblio/updateProduct/", data)
+  }
 }
