@@ -165,7 +165,7 @@ export class BiblioComponent implements OnInit {
           title: 'Your work has been saved',
           showConfirmButton: false,
           timer: 1500
-        })
+        }) 
       })
     }
   }

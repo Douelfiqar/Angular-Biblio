@@ -13,6 +13,8 @@ import { AddProductComponent } from './add-product/add-product.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
 import { UpdateBookComponent } from './biblio/update-book/update-book.component';
+import { PretationBookComponent } from './preter/pretation-book/pretation-book.component';
+import { LocationComponent } from './location/location.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +23,8 @@ import { UpdateBookComponent } from './biblio/update-book/update-book.component'
     BookComponent,
     AddProductComponent,
     UpdateBookComponent,
+    PretationBookComponent,
+    LocationComponent,
   ],
   imports: [
     BrowserModule,

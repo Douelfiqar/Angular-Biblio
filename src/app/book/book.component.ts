@@ -20,7 +20,6 @@ export class BookComponent implements OnInit {
     this.bookId = this.route.snapshot.paramMap.get('id') as string;
     this.bookService.getDocsById(this.bookId).subscribe((data:any)=>{
         this.book = data;
-        console.log(this.book);
     })
     
   }
