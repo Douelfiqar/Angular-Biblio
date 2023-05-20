@@ -3,6 +3,8 @@ import { LocationService } from './service/location.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
 
 import Swal from 'sweetalert2';
+import { PreterService } from '../preter/service/preter.service';
+import { BookComponent } from '../book/book.component';
 
 @Component({
   selector: 'app-location',
@@ -18,15 +20,17 @@ export class LocationComponent implements OnInit {
   @ViewChild('CloseBookBtn2') CloseBookBtn!: ElementRef;
 
 
-    constructor(private _fb: FormBuilder, private locationService:LocationService){
-      this.addLocation = this._fb.group({
-        idDocument: null,
-        cinClient: null,
-      })
-    }
+  constructor(private _fb: FormBuilder, private locationService:LocationService, private preterService:PreterService, private bookComp:BookComponent){
+    this.addLocation = this._fb.group({
+      idDocument: null,
+      cinClient: null,
+    })
+  }
+
   ngOnInit(): void {
     this.getAllClient();
-  }
+    
+  } 
   
 
   getAllClient(){
@@ -45,6 +49,7 @@ export class LocationComponent implements OnInit {
     if(this.addLocation.valid){
         this.locationService.addLocation(this.addLocation.value.idDocument, this.addLocation.value.cinClient).subscribe(()=>{
           this.CloseBookBtn.nativeElement.click();
+          this.bookComp.btnDisplayPretation()
           Swal.fire({
             position: 'top-end',
             icon: 'success',

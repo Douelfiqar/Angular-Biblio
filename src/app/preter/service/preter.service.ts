@@ -19,4 +19,6 @@ export class PreterService {
   addPretation(idDocument:number, idAdherent:number){
     return this.http.get(this.link+"/Biblio/addPret?idDocument="+idDocument+"&codeAdherent="+idAdherent)
   }  
+
+
 }

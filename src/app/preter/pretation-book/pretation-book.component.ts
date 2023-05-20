@@ -2,6 +2,7 @@ import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { PreterService } from '../service/preter.service';
 import Swal from 'sweetalert2';
+import { BookComponent } from '../../book/book.component';
 
 @Component({
   selector: 'app-pretation-book',
@@ -11,14 +12,14 @@ import Swal from 'sweetalert2';
 export class PretationBookComponent implements OnInit {
 
   @Input() bookId !: string;
-
+  
   addPretation: FormGroup;
   Adherents:any
   selectedCIN !:string;
   @ViewChild('CloseBookBtn3') CloseBookBtn!: ElementRef;
-
-
-    constructor(private _fb: FormBuilder, private preterService:PreterService){
+ 
+  
+    constructor(private _fb: FormBuilder, private preterService:PreterService, private bookComp:BookComponent){
       this.addPretation = this._fb.group({
         idDocument: null,
         codeAdherent: null,
@@ -28,6 +29,7 @@ export class PretationBookComponent implements OnInit {
     this.getAllAdherent();
   }
   
+
 
   getAllAdherent(){
       this.preterService.getAdherent().subscribe((data)=>{
@@ -45,6 +47,7 @@ export class PretationBookComponent implements OnInit {
     if(this.addPretation.valid){
         this.preterService.addPretation(this.addPretation.value.idDocument, this.addPretation.value.codeAdherent).subscribe(()=>{
           this.CloseBookBtn.nativeElement.click();
+          this.bookComp.btnDisplayPretation()
           Swal.fire({
             position: 'top-end',
             icon: 'success',

@@ -15,6 +15,7 @@ import { FormsModule } from '@angular/forms';
 import { UpdateBookComponent } from './biblio/update-book/update-book.component';
 import { PretationBookComponent } from './preter/pretation-book/pretation-book.component';
 import { LocationComponent } from './location/location.component';
+import { ListeReservationComponent } from './liste-reservation/liste-reservation.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { LocationComponent } from './location/location.component';
     UpdateBookComponent,
     PretationBookComponent,
     LocationComponent,
+    ListeReservationComponent,
   ],
   imports: [
     BrowserModule,

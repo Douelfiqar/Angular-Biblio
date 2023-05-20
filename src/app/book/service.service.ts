@@ -16,6 +16,8 @@ export class ServiceService {
   }
 
 
-
+  getNombrePretation(categorie:string){
+    return this.http.get(this.link+"/Biblio/NombreDoc?categorie="+categorie)
+  }
 
 }
