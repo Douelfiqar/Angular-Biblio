@@ -8,7 +8,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 
 
 @Component({
-  selector: 'app-biblio',
+  selector: 'app-biblio', 
   templateUrl: './biblio.component.html',
   styleUrls: ['./biblio.component.css']
 })

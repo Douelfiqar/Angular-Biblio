@@ -1,0 +1,116 @@
+<div class="container">
+    <div class="row mt-5">
+        <div class="col-md-2">
+            
+        </div>
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header d-flex justify-content-between">
+                  <div class="d-flex justify-content-between">
+                    <span class="mt-1">List des Clients</span>
+                    <div class="dropdown ms-3">
+                      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                        Trier
+                      </button>
+                      <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                        <li><a class="dropdown-item" style="cursor: pointer;" (click)="getAdherents()">Adherent</a></li>
+                        <li><a class="dropdown-item" style="cursor: pointer;" (click)="getClients()">Client</a></li>
+
+                      </ul>
+                    </div>
+                  </div>
+                  <div>
+                    <input class="form-control me-2" type="search" placeholder="Search By CIN" aria-label="Search" [(ngModel)]="searchTerm" (keyup)="onSearch()"> 
+                  </div>
+                  <!-- <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"> -->
+
+                     <div class="d-flex">
+                      <button class="btn btn-outline-info" type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><fa-icon [icon]="faPlus"></fa-icon><span> Client</span></button>
+                      <button class="btn btn-outline-info ms-1" type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop1"><fa-icon [icon]="faPlus"></fa-icon><span> Adherent</span></button>
+                    </div>
+                   
+                     <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="modal-title" id="staticBackdropLabel">Ajouter Un Client</h5>
+                              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                  
+
+                              <app-add-client-adherent [adhrent]="NonAdherent"></app-add-client-adherent> 
+                        
+                               
+                               
+                            </div>
+                           
+                          </div>
+                        </div>
+                      </div>
+                     
+                      <div class="modal fade" id="staticBackdrop1" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="modal-title" id="staticBackdropLabel">Ajouter Un Adherent</h5>
+                              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                  
+
+                                <app-add-client-adherent [adhrent]="adhrent"></app-add-client-adherent> 
+                        
+                               
+                               
+                            </div>
+                           
+                          </div>
+                        </div>
+                      </div>
+
+
+                </div>
+                <div class="card-body row">
+               
+                    <div class="col-md-12">
+
+                      <table class="table table-striped text-center" >
+                        <thead>
+                          <tr>
+                            <th scope="col">CIN</th>
+                            <th scope="col">Nom</th>
+                            <th scope="col">Addess</th>
+                            
+                            <th scope="col">Phone</th>
+                            <th scope="col">Nombre Allocation</th>
+                          </tr>
+                        </thead>
+                        <tbody *ngFor="let client of clients | paginate: { itemsPerPage: itemsPerPage, currentPage: p } ">
+                          <tr>
+                            <th scope="row">{{client.cin}}</th>
+                            <td>{{client.nom}}</td>
+                            <td>{{client.address}}</td>
+                            <td>{{client.numTelephone}}</td>
+                            <td>{{client.nmbreAllocationEnCours}}</td>
+                          </tr>
+                        </tbody>
+                      </table>
+
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4"></div>
+                    <div class="mt-8 py-5 d-flex justify-center items-center col-md-8">
+                        <pagination-controls (pageChange)="p = $event"></pagination-controls>
+                    </div>
+                </div>
+               
+
+            </div>
+
+            
+
+        </div>
+    </div>
+</div>

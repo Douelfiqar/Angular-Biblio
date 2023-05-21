@@ -16,6 +16,9 @@ import { UpdateBookComponent } from './biblio/update-book/update-book.component'
 import { PretationBookComponent } from './preter/pretation-book/pretation-book.component';
 import { LocationComponent } from './location/location.component';
 import { ListeReservationComponent } from './liste-reservation/liste-reservation.component';
+import { GestionUsersComponent } from './gestion-users/gestion-users.component';
+import { AddClientAdherentComponent } from './gestion-users/add-client-adherent/add-client-adherent.component';
+import { RapportComponent } from './rapport/rapport.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +30,9 @@ import { ListeReservationComponent } from './liste-reservation/liste-reservation
     PretationBookComponent,
     LocationComponent,
     ListeReservationComponent,
+    GestionUsersComponent,
+    AddClientAdherentComponent,
+    RapportComponent,
   ],
   imports: [
     BrowserModule,
