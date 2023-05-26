@@ -1,0 +1,65 @@
+<form >
+
+    <div class="accordion accordion-flush" id="accordionFlushExample">
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="flush-headingOne">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                List Des Location
+            </button>
+          </h2>
+          <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+            <div class="accordion-body">
+                
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Doc Id</th>
+                            <th scope="col">Nom</th>
+                            <th scope="col">Rendu</th>
+                        
+                        </tr>
+                    </thead>
+                    <tbody *ngFor="let Location of listLocation">
+                        <th scope="row">{{Location.id}}</th>
+                        <td>{{Location.titre}}</td>
+                        <td style="cursor: pointer;"><button class="btn" (click)="renduLocation(Location.id)"><fa-icon [icon]="faCheck"></fa-icon></button></td>
+                    </tbody>
+                </table>
+
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item" *ngIf="isAdhCheck">
+          <h2 class="accordion-header" id="flush-headingTwo">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                List Des Pret
+            </button>
+          </h2>
+          <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
+            <div class="accordion-body">
+             
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Doc Id</th>
+                            <th scope="col">Nom</th>
+                            <th scope="col">Rendu</th>
+                        
+                        </tr>
+                    </thead>
+                    <tbody *ngFor="let Pret of listPret">
+                        <th scope="row">{{Pret.id}}</th>
+                        <td>{{Pret.titre}}</td>
+                        <td style="cursor: pointer;"><button class="btn" (click)="renduPret(Pret.id)"><fa-icon [icon]="faCheck"></fa-icon></button></td>
+                    </tbody>
+                </table>
+
+            </div>
+          </div>
+        </div>
+       
+      </div>
+
+</form>
+
+

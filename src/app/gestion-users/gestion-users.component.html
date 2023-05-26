@@ -7,7 +7,7 @@
             <div class="card">
                 <div class="card-header d-flex justify-content-between">
                   <div class="d-flex justify-content-between">
-                    <span class="mt-1">List des Clients</span>
+                    <span class="mt-1">List des Clients et d'Adhrents</span>
                     <div class="dropdown ms-3">
                       <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                         Trier
@@ -84,6 +84,7 @@
                             
                             <th scope="col">Phone</th>
                             <th scope="col">Nombre Allocation</th>
+                            <th scope="col">Details</th>
                           </tr>
                         </thead>
                         <tbody *ngFor="let client of clients | paginate: { itemsPerPage: itemsPerPage, currentPage: p } ">
@@ -93,6 +94,24 @@
                             <td>{{client.address}}</td>
                             <td>{{client.numTelephone}}</td>
                             <td>{{client.nmbreAllocationEnCours}}</td>
+                            <td><button class="btn btn-plus" type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop3" (click)="giveIdToChild(client.id)"><span><fa-icon [icon]="faPlus"></fa-icon></span></button></td>
+                            
+                            <div class="modal fade" id="staticBackdrop3" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel3" aria-hidden="true">
+                              <div class="modal-dialog">
+                                <div class="modal-content">
+                                  <div class="modal-header">
+                                    <h5 class="modal-title" id="staticBackdropLabel">Details</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                  </div>
+                                  <div class="modal-body">
+                        
+
+                                    <app-details-user [listLocation]="listLocation" [listPret]="listPret" [isAdhCheck]="isAdhCheck" [idChild]="idChild"></app-details-user>
+                                  </div>
+                                  
+                                </div>
+                              </div>
+                            </div>
                           </tr>
                         </tbody>
                       </table>

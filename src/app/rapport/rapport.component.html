@@ -1,1 +1,115 @@
-<p>rapport works!</p>
+<div class="container">
+    <div class="row mt-5">
+        <div class="col-md-2">
+            
+        </div>
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header d-flex justify-content-between">
+                  <div class="d-flex justify-content-between">
+                    <span class="mt-1">Rapport</span>
+                    <!-- <div class="dropdown ms-3">
+                      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                        Trier
+                      </button>
+                      <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                        <li><a class="dropdown-item" style="cursor: pointer;" (click)="getAdherents()">Adherent</a></li>
+                        <li><a class="dropdown-item" style="cursor: pointer;" (click)="getClients()">Client</a></li>
+
+                      </ul>
+                    </div> -->
+                  </div>
+                  <!-- <div>
+                    <input class="form-control me-2" type="search" placeholder="Search By CIN" aria-label="Search" [(ngModel)]="searchTerm" (keyup)="onSearch()"> 
+                  </div> -->
+                  <!-- <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"> -->
+
+              
+                  <div class="d-flex">
+                    <button class="btn btn-outline-info ms-1" type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop1"><span> Selectionner une Date</span></button>
+                  </div>
+                 
+                   <div class="modal fade" id="staticBackdrop1" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                      <div class="modal-dialog">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="staticBackdropLabel">Selectionner une Date</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                          </div>
+                          <div class="modal-body">
+                
+
+                 <form [formGroup]="dateGestion" (ngSubmit)="functionOnInit()">
+                  <div class="row">
+                    <div class="mb-3 col-md-5">
+                        <label for="exampleFormControlInput1" class="form-label">Date Depart</label>
+                        <input type="date" class="form-control" id="exampleFormControlInput1" placeholder="123" formControlName="date_depart" >
+
+                    </div>
+                    <div class="col-md-1"></div>
+                    <div class="mb-3 col-md-6">
+                        <label for="exampleFormControlInput1" class="form-label">Date Fin</label>
+                        <input type="date" class="form-control" id="exampleFormControlInput1" placeholder="123" formControlName="date_fin" >
+                    </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" #CloseBookBtn2>Fermer</button>
+                  <button type="submit" class="btn btn-primary" >Ajouter</button>
+                </div> 
+                 </form>
+                      
+                             
+                             
+                          </div>
+                         
+                        </div>
+                      </div>
+                    </div>
+
+
+                </div>
+                <div class="card-body row">
+               
+                    <div class="col-md-12">
+
+                      <table class="table table-striped text-center" >
+                        <thead>
+                          <tr>
+                            <th scope="col">Document</th>
+                            <th scope="col">Nombre Pretation</th>
+                            <th scope="col">Nombre Location</th>
+                            <th scope="col">Amende</th>
+                            <th scope="col">Nombre d'exemplaire</th>
+                            <th scope="col">Perdu</th>
+
+                          </tr>
+                        </thead>
+                        <tbody *ngFor="let book of books | paginate: { itemsPerPage: itemsPerPage, currentPage: p } ">
+                          <tr>
+                            <th scope="row">{{book.id}}</th>
+                            <td>{{book.pretCount}}</td>
+                            <td>{{book.locationCount}}</td>
+                            <td>{{book.nombre_exemplaire}}</td>
+                            <td>{{book.nombreExemplaire}}</td>
+                            <td>{{book.perdu}}</td>
+                          </tr>
+                        </tbody>
+                      </table>
+
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4"></div>
+                    <div class="mt-8 py-5 d-flex justify-center items-center col-md-8">
+                        <pagination-controls (pageChange)="p = $event"></pagination-controls>
+                    </div>
+                </div>
+               
+
+            </div>
+
+            
+
+        </div>
+    </div>
+</div>

@@ -19,6 +19,7 @@ import { ListeReservationComponent } from './liste-reservation/liste-reservation
 import { GestionUsersComponent } from './gestion-users/gestion-users.component';
 import { AddClientAdherentComponent } from './gestion-users/add-client-adherent/add-client-adherent.component';
 import { RapportComponent } from './rapport/rapport.component';
+import { DetailsUserComponent } from './gestion-users/details-user/details-user.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { RapportComponent } from './rapport/rapport.component';
     GestionUsersComponent,
     AddClientAdherentComponent,
     RapportComponent,
+    DetailsUserComponent,
   ],
   imports: [
     BrowserModule,

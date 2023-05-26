@@ -26,4 +26,27 @@ export class UsersService {
   getAdherents(){
     return this.http.get(this.link+"/Biblio/getAdherents")
   }
+
+
+  getLocationClient(idClient:number){
+    return this.http.get(this.link+"/Biblio/ListLocation?idClient="+idClient)
+
+  }
+
+  getPretAdherent(idAdherent:number){
+    return this.http.get(this.link+"/Biblio/ListPret?idAdherent="+idAdherent)
+  }
+
+  isAdherentF(idClient:number){
+    return this.http.get(this.link+"/Biblio/isAdherent?idAdherent="+idClient)
+  }
+
+  public renduLocation(idDocument:number, idClient:number){
+    return this.http.get(this.link+"/Biblio/renduLocation?idDocument="+idDocument+"&idClient="+idClient)
+  }
+
+  public renduPret(idDocument:number, idAdherent:number){
+    return this.http.get(this.link+"/Biblio/renduPret?idDocument="+idDocument+"&idAdherent="+idAdherent)
+  }
+
 }

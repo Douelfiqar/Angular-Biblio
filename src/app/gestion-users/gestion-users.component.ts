@@ -1,9 +1,10 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component, ElementRef, Input, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { faPen, faPlus, faTrash } from '@fortawesome/free-solid-svg-icons';
 import Swal from 'sweetalert2';
 import { UsersService } from './service/users.service';
 import { slice, shuffle } from 'lodash';
+import { DetailsUserComponent } from './details-user/details-user.component';
 
 @Component({
   selector: 'app-gestion-users',
@@ -63,33 +64,6 @@ export class GestionUsersComponent {
     })
   }
 
-
-
-    //Delete Iteam
-  // sweet(id:number){
-  //   Swal.fire({
-  //     title: 'Are you sure?',
-  //     text: "You won't be able to revert this!",
-  //     icon: 'warning',
-  //     showCancelButton: true,
-  //     confirmButtonColor: '#3085d6',
-  //     cancelButtonColor: '#d33',
-  //     confirmButtonText: 'Yes, delete it!'
-  //   }).then((result) => {
-  //     if (result.isConfirmed) {
-  //       this.gestionUsersService.deleteClientById(id).subscribe(()=>{
-  //         this.clients = this.clients.filter(item => item.id !== id);
-  //         Swal.fire(
-  //           'Deleted!',
-  //           'Your file has been deleted.',
-  //           'success'
-  //         )
-  //       })
-        
-  //     }
-  //   })
-  // }
-
   getClients(){
     this.functionOnInit()
   }
@@ -112,42 +86,41 @@ export class GestionUsersComponent {
       this.functionOnInit()
       }
   }
+  
+  idChild !: number;
+  
+  giveIdToChild(id:number){
+    
+    this.idChild = id
+    this.isAdherentF(id)
+    this.SelectionerLocation(id)
+    this.SelectionerPret(id)
+  }
 
+  listLocation :any;
 
-  // getDocByIdToUpdate(id:number){
+  SelectionerLocation(id:number){
+    this.gestionUsersService.getLocationClient(id).subscribe((data)=>{
+      this.listLocation = data
+    })
+  }
+  listPret:any;
 
-  //   this.biblioService.getDocById(id).subscribe((data)=>{   
-  //       this.book = data;
+  SelectionerPret(id){
+    this.gestionUsersService.getPretAdherent(this.idChild).subscribe((data)=>{
+      this.listPret = data
+      
+    })
+  }
+  adh:any;
+  isAdhCheck!:boolean;
+  isAdherentF(id:number) {
+    this.gestionUsersService.isAdherentF(id).subscribe((data) => {
+      this.adh = data
+      this.isAdhCheck = !!this.adh;
+    });
+  }
 
-  //       this.updateBook.patchValue({
-  //         id: this.book.id,
-  //         sujet: this.book.sujet,
-  //         titre: this.book.titre,
-  //         auteur: this.book.auteur,
-  //         categorie: this.book.categorie,
-  //         nombreExemplaire: this.book.nombreExemplaire,
-  //         dateEdition: this.book.dateEdition,
-  //         prixLocation: this.book.prixLocation,
-  //         linkImage: this.book.linkImage,
-  //         shortDesc: this.book.shortDesc
-  //       });
-  //   })
-  // }
-
-  // updateBookF(){
-  //   if(this.updateBook.valid){
-  //     this.biblioService.updateBook(this.updateBook.value).subscribe(()=>{
-  //       this.functionOnInit();
-  //       this.CloseBookBtn.nativeElement.click();
-  //       Swal.fire({
-  //         position: 'top-end',
-  //         icon: 'success',
-  //         title: 'Your work has been saved',
-  //         showConfirmButton: false,
-  //         timer: 1500
-  //       }) 
-  //     })
-  //   }
-  // }
 
 }
+
