@@ -49,4 +49,12 @@ export class UsersService {
     return this.http.get(this.link+"/Biblio/renduPret?idDocument="+idDocument+"&idAdherent="+idAdherent)
   }
 
+  public getAmendeLocation(idDocument:number, idClient:number){
+    return this.http.get(this.link+"/Biblio/amendeLocation?idDocument="+idDocument+"&idClient="+idClient)
+  }
+
+
+  public getAmendePret(idDocument:number, idClient:number){
+    return this.http.get(this.link+"/Biblio/amendePret?idDocument="+idDocument+"&idClient="+idClient)
+  }
 }

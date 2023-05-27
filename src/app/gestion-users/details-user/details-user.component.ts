@@ -38,6 +38,7 @@ export class DetailsUserComponent implements OnInit {
   renduLocation(id:number){
 
     this.userService.renduLocation(id, this.idChild).subscribe(()=>{
+      
       this.gestionUser.giveIdToChild(this.idChild)
     })
   }

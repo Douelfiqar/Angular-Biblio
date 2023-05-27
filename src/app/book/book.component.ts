@@ -32,6 +32,9 @@ export class BookComponent implements OnInit {
         this.reptureDeStock = data.nombreExemplaire
         this.btnDisplayPretation()
     })
+    
+      this.getListReservation(parseInt(this.bookId))
+    
   }
   
 
@@ -63,6 +66,13 @@ export class BookComponent implements OnInit {
 
   }
 
+  listReservation:any
+  getListReservation(idBook:number){
+    this.bookService.ListReservation(idBook).subscribe((data)=>{
+      console.log(data);
+      this.listReservation = data
+    })
+  }
 
 
 }

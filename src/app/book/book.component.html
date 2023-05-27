@@ -29,6 +29,38 @@
                </div>
                <div class="d-flex justify-content-center mt-2" *ngIf="reservation">
                 <button class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#exampleModal1">Ajouter Au liste de reservation</button>
+                <button class="btn btn-outline-success ms-1" data-bs-toggle="modal" data-bs-target="#exampleModal3">Afficher la liste de reservation</button>
+
+                <!-- Modal -->
+                  <div class="modal fade" id="exampleModal3" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="exampleModalLabel">La liste des reservation</h5>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                          <table class="table">
+                            <thead>
+                              <tr>
+                                <th scope="col">Client CIN</th>
+                                <th scope="col">Date</th>
+                              </tr>
+                            </thead>
+                            <tbody *ngFor="let res of listReservation">
+                              <tr>
+                                <th scope="row">{{res.client.cin}}</th>
+                                <td>{{res.date}}</td>
+                              </tr>
+                            </tbody>
+                          </table>
+
+                        </div>
+
+                      </div>
+                    </div>
+                  </div>
+               
                 <app-liste-reservation [bookId]="bookId"></app-liste-reservation>
              </div>
                 </div>

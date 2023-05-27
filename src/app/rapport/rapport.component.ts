@@ -46,7 +46,6 @@ export class RapportComponent {
       if (this.books) {
         this.books.forEach((book) => {
           this.rapportService.getBooksPretNmbre(this.dateGestion.value.date_depart, this.dateGestion.value.date_fin, book.id).subscribe((counte) => {
-            console.log(book.pretCount);
             book.pretCount = counte;
           });
         });

@@ -20,4 +20,8 @@ export class ServiceService {
     return this.http.get(this.link+"/Biblio/NombreDoc?categorie="+categorie)
   }
 
+  ListReservation(idBook:number){
+    return this.http.get(this.link+"/Biblio/ListReservation?idBook="+idBook)
+  }
+  
 }

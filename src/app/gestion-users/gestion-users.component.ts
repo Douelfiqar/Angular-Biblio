@@ -102,6 +102,15 @@ export class GestionUsersComponent {
   SelectionerLocation(id:number){
     this.gestionUsersService.getLocationClient(id).subscribe((data)=>{
       this.listLocation = data
+      
+      for (let i = 0; i < this.listLocation.length; i++) {
+        const row = this.listLocation[i];
+
+        this.gestionUsersService.getAmendeLocation(row.id, id).subscribe((data)=>{
+          this.listLocation[i].amende = data
+        })
+      }
+
     })
   }
   listPret:any;
@@ -109,6 +118,14 @@ export class GestionUsersComponent {
   SelectionerPret(id){
     this.gestionUsersService.getPretAdherent(this.idChild).subscribe((data)=>{
       this.listPret = data
+
+      for (let i = 0; i < this.listPret.length; i++) {
+        const row = this.listPret[i];
+
+        this.gestionUsersService.getAmendePret(row.id, id).subscribe((data)=>{
+          this.listPret[i].amende = data
+        })
+      }
       
     })
   }
